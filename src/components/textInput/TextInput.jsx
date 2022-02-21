@@ -55,7 +55,7 @@ const TextInput = ({
         placeholder={placeholder}
         onFocus={onFocus}
         onBlur={onBlur}
-        required="required"
+        // required="required"
         onKeyPress={onKeyPress}
         disabled={disabled ? "disabled" : false}
       />

@@ -7,28 +7,42 @@ import TextInput from "../../components/textInput";
 import "./menu.css";
 
 const Menu = () => {
-  const [name, setName] = useState("");
+  const [year, setYear] = useState("");
+  const [genre, setGenre] = useState("");
+  const [numberOfAlbums, setNumberOfAlbums] = useState("");
 
   return (
     <div id="menu">
       <TextInput
-        label="Username"
-        value={name}
-        setValue={setName}
+        label="Year"
+        value={year}
+        setValue={setYear}
+        // disabled={loading}
+      />
+      <TextInput
+        label="Genre"
+        value={genre}
+        setValue={setGenre}
+        // disabled={loading}
+      />
+      <TextInput
+        label="Number of albums"
+        value={numberOfAlbums}
+        setValue={setNumberOfAlbums}
         // disabled={loading}
       />
       <Button
-        text="Create campaign"
-        icon="add"
+        text="Create playlist"
+        icon="playlist_add"
         onClick={() => {}}
-        disabled={name.length === 0}
+        disabled={year.length === 0}
       />
-      <Button
+      {/* <Button
         text="Join campaign"
         icon="login"
         onClick={() => {}}
-        disabled={name.length === 0}
-      />
+        disabled={year.length === 0}
+      /> */}
       {/* <span className="version">{appVersion}</span> */}
     </div>
   );
