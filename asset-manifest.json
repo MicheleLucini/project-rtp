@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/projectRTP/static/css/main.58cb61f5.css",
-    "main.js": "/projectRTP/static/js/main.dba88939.js",
-    "index.html": "/projectRTP/index.html",
-    "main.58cb61f5.css.map": "/projectRTP/static/css/main.58cb61f5.css.map",
-    "main.dba88939.js.map": "/projectRTP/static/js/main.dba88939.js.map"
+    "main.css": "/project-rtp/static/css/main.58cb61f5.css",
+    "main.js": "/project-rtp/static/js/main.dba88939.js",
+    "index.html": "/project-rtp/index.html",
+    "main.58cb61f5.css.map": "/project-rtp/static/css/main.58cb61f5.css.map",
+    "main.dba88939.js.map": "/project-rtp/static/js/main.dba88939.js.map"
   },
   "entrypoints": [
     "static/css/main.58cb61f5.css",
