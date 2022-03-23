@@ -10,6 +10,8 @@ const TextInput = ({
   placeholder,
   disabled,
   onKeyPressEnter,
+  tooltip,
+  setCursorTooltip,
 }) => {
   const [isActive, setIsActive] = useState(false);
 
@@ -36,6 +38,14 @@ const TextInput = ({
     },
     [onKeyPressEnter]
   );
+  const onMouseEnter = useCallback(
+    () => setCursorTooltip(tooltip),
+    [setCursorTooltip, tooltip]
+  );
+  const onMouseLeave = useCallback(
+    () => setCursorTooltip(""),
+    [setCursorTooltip]
+  );
 
   return (
     <div
@@ -45,6 +55,8 @@ const TextInput = ({
         (!!value ? " filled" : "") +
         (disabled ? " disabled" : "")
       }
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       <label>{label}</label>
       <input

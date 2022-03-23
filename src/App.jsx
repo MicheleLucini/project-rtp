@@ -9,6 +9,7 @@ import "./App.css";
 
 const App = () => {
   // CLIENT CURSOR ##########################################
+  const [cursorTooltip, setCursorTooltip] = useState("");
 
   const [clientCursor, setClientCursor] = useState({
     x: 0,
@@ -54,7 +55,7 @@ const App = () => {
   return (
     <>
       <Background />
-      <Menu />
+      <Menu setCursorTooltip={setCursorTooltip} />
       {clientCursor && (
         <Cursor
           cursorData={clientCursor}
@@ -63,6 +64,7 @@ const App = () => {
           changeCursorUp={changeCursorUp}
           changeCursorDown={changeCursorDown}
           changeCursorHide={changeCursorHide}
+          tooltip={cursorTooltip}
         />
       )}
     </>

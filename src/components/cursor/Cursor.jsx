@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useEffect } from "react";
+import React, { useMemo, useCallback, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import "./cursor.css";
@@ -10,7 +10,10 @@ const Cursor = ({
   changeCursorHide,
   changeCursorUp,
   changeCursorDown,
+  tooltip,
 }) => {
+  const [tooltipAnimated, setTooltipAnimated] = useState("");
+
   const cursorClass = useMemo(
     () =>
       [
@@ -74,6 +77,20 @@ const Cursor = ({
     handleContextMenu,
   ]);
 
+  useEffect(() => {
+    if (tooltip === "") {
+      setTooltipAnimated("");
+      return;
+    }
+    const to = [];
+    tooltip.split("").map((letter, i) => {
+      to.push(
+        setTimeout(() => setTooltipAnimated((prev) => prev + letter), i * 20)
+      );
+    });
+    return () => to.map((t) => clearTimeout(t));
+  }, [tooltip]);
+
   return (
     <div
       className={cursorClass}
@@ -82,7 +99,7 @@ const Cursor = ({
       }}
     >
       <div className="goccia"></div>
-      <div className="text">{cursorData.text}</div>
+      <div className="text">{tooltipAnimated}</div>
     </div>
   );
 };
@@ -95,6 +112,7 @@ Cursor.propTypes = {
   changeCursorDown: PropTypes.func.isRequired,
   changeCursorHide: PropTypes.func.isRequired,
   viewport: PropTypes.object.isRequired,
+  tooltip: PropTypes.string.isRequired,
 };
 
 Cursor.defaultProps = {
