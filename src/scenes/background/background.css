@@ -5,7 +5,7 @@
   right: 0;
   bottom: 0;
   /*background: radial-gradient(circle at top, #fff 50%, #cfd8dc 100%);*/
-  background-color: #fff;
+  background-color: #eceff1;
   z-index: 1;
   box-sizing: border-box;
   overflow: hidden;
@@ -21,7 +21,7 @@
   background-size: auto;
   background-repeat: repeat;
   mix-blend-mode: overlay;
-  opacity: 0.2;
+  opacity: 0.3;
 }
 /* 
 #bg > div {

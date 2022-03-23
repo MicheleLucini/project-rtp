@@ -1,9 +1,23 @@
 #menu {
   z-index: 2;
   display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#menu > .sx {
+  display: grid;
+  place-content: center;
+  text-align: center;
+  font-size: 5rem;
+  font-weight: 900;
+}
+
+#menu > .dx {
+  background-color: white;
+  display: grid;
   justify-content: center;
   align-items: center;
-  margin: 2rem;
+  padding: 2rem;
   align-content: center;
   gap: 2rem;
 }
