@@ -30,7 +30,6 @@ const Cursor = ({
   const handleMouseMove = useCallback(
     (event) => {
       const e = event || window.event;
-      console.log(e);
       changeCursorX(e.x);
       changeCursorY(e.y);
     },
@@ -111,12 +110,9 @@ Cursor.propTypes = {
   changeCursorUp: PropTypes.func.isRequired,
   changeCursorDown: PropTypes.func.isRequired,
   changeCursorHide: PropTypes.func.isRequired,
-  viewport: PropTypes.object.isRequired,
   tooltip: PropTypes.string.isRequired,
 };
 
-Cursor.defaultProps = {
-  playerId: null,
-};
+Cursor.defaultProps = {};
 
 export default Cursor;
