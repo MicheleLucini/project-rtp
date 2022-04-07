@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 // import PropTypes from "prop-types";
 
 import Button from "../../components/button";
@@ -10,6 +10,24 @@ const Menu = ({ setCursorTooltip }) => {
   const [year, setYear] = useState("");
   const [genre, setGenre] = useState("");
   const [numberOfAlbums, setNumberOfAlbums] = useState("");
+
+  const onCreateClick = useCallback(() => {
+    fetch("https://api.example.com/items")
+      .then((res) => {
+        console.log(res);
+        console.log(JSON.stringify(res));
+        return res.json();
+      })
+      .then(
+        (result) => {
+          console.log(result);
+          console.log(JSON.stringify(result));
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+  });
 
   return (
     <div id="menu">
@@ -24,7 +42,7 @@ const Menu = ({ setCursorTooltip }) => {
           value={year}
           setValue={setYear}
           // disabled={loading}
-          tooltip="Inserisci l'anno della playlist"
+          tooltip="Enter the release year of the albums"
           setCursorTooltip={setCursorTooltip}
         />
         <TextInput
@@ -32,18 +50,22 @@ const Menu = ({ setCursorTooltip }) => {
           value={genre}
           setValue={setGenre}
           // disabled={loading}
+          tooltip="Enter the genre of music"
+          setCursorTooltip={setCursorTooltip}
         />
         <TextInput
           label="Number of albums"
           value={numberOfAlbums}
           setValue={setNumberOfAlbums}
           // disabled={loading}
+          tooltip="Enter the number of albums to add to the playlist"
+          setCursorTooltip={setCursorTooltip}
         />
         <Button
           text="Create playlist"
           icon="playlist_add"
-          onClick={() => {}}
-          disabled={year.length === 0}
+          onClick={onCreateClick}
+          // disabled={year.length === 0}
         />
         {/* <Button
         text="Join campaign"
@@ -57,8 +79,8 @@ const Menu = ({ setCursorTooltip }) => {
   );
 };
 
-Menu.propTypes = {};
+// Menu.propTypes = {};
 
-Menu.defaultProps = {};
+// Menu.defaultProps = {};
 
 export default Menu;
