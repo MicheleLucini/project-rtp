@@ -6,27 +6,41 @@ import TextInput from "../../components/textInput";
 
 import "./menu.css";
 
+async function postData(url = "", data = {}) {
+  try {
+    // Default options are marked with *
+    const response = await fetch(url, {
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors", // no-cors, *cors, same-origin
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: "same-origin", // include, *same-origin, omit
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: "follow", // manual, *follow, error
+      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify(data), // body data type must match "Content-Type" header
+    });
+    console.log("response");
+    console.log(response);
+    console.log(JSON.stringify(response));
+    return response.json(); // parses JSON response into native JavaScript objects
+  } catch (e) {
+    console.error(e);
+  }
+  return null;
+}
+
 const Menu = ({ setCursorTooltip }) => {
   const [year, setYear] = useState("");
   const [genre, setGenre] = useState("");
   const [numberOfAlbums, setNumberOfAlbums] = useState("");
 
-  const onCreateClick = useCallback(() => {
-    fetch("https://api.example.com/items")
-      .then((res) => {
-        console.log(res);
-        console.log(JSON.stringify(res));
-        return res.json();
-      })
-      .then(
-        (result) => {
-          console.log(result);
-          console.log(JSON.stringify(result));
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
+  const onCreateClick = useCallback(async () => {
+    const data = await postData("https://api.example.com/items");
+    console.log(data);
+    console.log(JSON.stringify(data));
   });
 
   return (
